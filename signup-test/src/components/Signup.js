@@ -1,29 +1,18 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
 function Signup (props) {
-  let [SignupMode, setSignupMode] = useState("signin")
-
+  const [SignupMode, setSignupMode] = useState("signin")
+  const [userEmail, setUserEmail] = useState("User")
+  
   const changeSignupMode = () => {
     setSignupMode(SignupMode === "signin" ? "signup" : "signin")
   }
 
-  const [Email, setEmail] = useState('');
+  const handleSubmit = () => {
+    alert(userEmail + " logged in successfully");
+  }
+  
  
-
-  const handleSubmit = event => {
-    
-   alert("You are logged in with your email" +event.Email);
-   event.preventDefault();
-    
-  };
-
-  displayEmailHandler = (e) => {
-    let updatedEmail = e.target.value;
-    this.setState({email: updatedEmail});
-      
-}
-
-
   if (SignupMode === "signin") {
     return (
       <div className="Login-form-container">
@@ -40,9 +29,11 @@ function Signup (props) {
             <label>Email</label>
             <input
               type="email"
-              className="form-control mt-1" onChange={this.displayEmailHandler}
-              placeholder="Enter email"
+              className="form-control mt-1" 
+              placeholder="Enter email"              
+              
             />
+            
           </div>
           <div className="form-group mt-3">
             <label>Password</label>
@@ -52,15 +43,15 @@ function Signup (props) {
               placeholder="Enter password"
             />
           </div>
-          <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate"/>
-          <label class="form-check-label" for="flexCheckIndeterminate">
+          <div className="form-check">
+          <input className="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate"/>
+          <label className="form-check-label" htmlFor="flexCheckIndeterminate">
             Remember Me
            </label>
            </div>
-           <div class="forgot-password text-right mt-2"><a href="#"> Forgot Password?</a></div>
+           <div className="forgot-password text-right mt-2"><a href="#"> Forgot Password?</a></div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" style={"color:rgba"} onSubmit={e => this.displayEmailHandler(e)} className="btn btn-primary">
+            <button type="submit"  styles={"color:rgba"} className="btn btn-primary" onClick={handleSubmit()} >
               Login
             </button>
           </div>         
